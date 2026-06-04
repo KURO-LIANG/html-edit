@@ -12,9 +12,11 @@
     "preview": "vite preview",
     "electron:dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "electron:build": "vite build && electron-builder",
-    "electron:build:mac": "vite build && electron-builder --mac",
-    "electron:build:win": "vite build && electron-builder --win",
-    "electron:build:linux": "vite build && electron-builder --linux"
+    "electron:build:mac": "vite build && electron-builder --mac --x64 --arm64",
+    "electron:build:mac:dir": "vite build && electron-builder --mac --arm64 --dir",
+    "electron:build:win": "vite build && electron-builder --win --x64",
+    "electron:build:win:dir": "vite build && electron-builder --win --x64 --dir",
+    "electron:build:linux": "vite build && electron-builder --linux --x64"
   },
   "build": {
     "appId": "com.htmledit.app",
