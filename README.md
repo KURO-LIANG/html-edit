@@ -2,12 +2,29 @@
 
 上传 HTML 文件，直接在预览中点击文字即可原地编辑，修改后下载。
 
+支持 Web 浏览器和桌面应用（Windows / macOS / Linux）。
+
 ## 快速开始
+
+### Web 开发
 
 ```bash
 npm install
-npm run dev
+npm run dev        # 启动开发服务器
+npm run build      # 构建生产版本
 ```
+
+### 桌面应用开发
+
+```bash
+npm run electron:dev        # 启动 Electron 开发模式（热重载）
+npm run electron:build      # 构建当前平台桌面应用
+npm run electron:build:mac  # 构建 macOS 应用
+npm run electron:build:win  # 构建 Windows 应用
+npm run electron:build:linux # 构建 Linux 应用
+```
+
+构建产物输出到 `release/` 目录。
 
 ## 使用方式
 
@@ -29,6 +46,7 @@ npm run dev
 ## 技术栈
 
 - Vue 3 (Composition API) + Vite 5
+- Electron 35（桌面应用封装）
 - 预览通过 iframe + `contentEditable` + `postMessage` 实现双向同步
 - HTML 解析基于 `DOMParser` + `TreeWalker`
 
@@ -42,4 +60,7 @@ src/
     HtmlPreview.vue       # iframe 预览，postMessage 通信
   utils/
     htmlParser.js         # HTML 文本提取、预览构建、重建导出
+electron/
+  main.js                 # Electron 主进程
+  preload.js              # 预加载脚本
 ```
